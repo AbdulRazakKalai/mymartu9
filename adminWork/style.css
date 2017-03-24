@@ -1,0 +1,89 @@
+.login-bx{
+    margin-top: 150px;
+}
+.line{
+    
+    margin-top: 5px;
+}
+.gap{
+    
+    margin-left: 15px;
+}
+.search-bx{
+    max-width: 300px;
+    float: right;
+    margin-top: 10px;
+    
+}
+.spacing{
+    
+     margin-left: 15px;
+    margin-top: 25px;
+}
+.header-btn-bx{
+    margin-top: 15px;
+        float: left;
+    margin-left: 15px;
+    
+}
+.img-user{
+    margin-top: 10px;
+    float: left;
+}
+
+.menu{
+    min-height:500px;
+    border:;
+    border-color: #474747;
+    border- 
+    border-width: 1px 1px 1px 1px;
+}
+.copyright{
+    
+    min-height: 90px;
+    color: white;
+    margin-top: 30px;
+    
+}
+footer{
+    margin-top: 10px;
+}
+@media only screen and (max-width: 960px) {
+   .menu{
+        min-height:220px;
+    border:;
+    border-color: #474747;
+    border- 
+    border-width: 1px 1px 1px 1px;
+       
+    }
+}
+
+.uploadzip-bg{
+    
+    background-color: #b4b3b3;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    min-height: 100px;
+    margin-top: 50px;
+    
+}
+.upload-bx{
+     max-width: 500px;
+    
+    margin-top: 30px;
+    
+}
+.csv-btn{
+    margin-top: 10px;
+    float: right;
+    margin-right: 10px;
+    
+    
+}
+
+.text-area{
+    
+    width:300px;
+    
+}
