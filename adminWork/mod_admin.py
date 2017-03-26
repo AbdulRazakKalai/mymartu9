@@ -31,25 +31,23 @@ def validateLogin():
 
 @route ('/uploadZippImage', method="POST")
 def uplodZippImage():
-	category = request.forms.category
-	upload = request.files.files
-  	name ,ext = os.path.splitext(upload.filename)
-  	#category = 'mycat'
-  	print 'category',category
-  	#if ext not in ('zipp'):
-  	#		return "Extension Not allowed"
-  	save_to_path = os.getcwd() +"/"+"tmp/{category}".format(category=category)
-  	print 'save_to_path:',save_to_path
-  	if not os.path.exists(save_to_path):
-  		os.makedirs(save_to_path)
-  	file_path = "{path}/{file}".format(path=save_to_path, file=upload.filename)
-  	print 'file_path:',file_path
-  	upload.save(file_path)
-
-
-
-
-
+  category = request.forms.get('category')
+  upload = request.files.get('files')
+  print 'category',category,upload
+  name ,ext = os.path.splitext(upload.filename)
+  save_to_path = os.getcwd() +"/"+"tmp/{category}".format(category=category)
+  print 'save_to_path:',save_to_path
+  if not os.path.exists(save_to_path):
+      os.makedirs(save_to_path)
+  file_path = "{path}/{file}".format(path=save_to_path, file=upload.filename)
+  print 'file_path:',file_path
+  if(os.path.exists(file_path)):
+    return 'False'
+  else:
+    upload.save(file_path)
+    admin_query = admin_querys();
+    res = admin_query.addProduct(category,upload.filename)
+    return 'True'
 
 ####################################
 

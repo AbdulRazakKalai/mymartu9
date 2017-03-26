@@ -27,3 +27,8 @@ class admin_querys:
    	 #print "result:",result
    	 return result
 
+   def addProduct(self,category,filename):
+	 data = [filename,category] 
+	 sql = ("INSERT INTO productList (product_id,category) ""VALUES (%s, %s)")
+	 result = self.cur.execute(sql,data)
+	 self.dbconn.commit()
