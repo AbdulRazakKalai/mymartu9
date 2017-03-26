@@ -28,6 +28,14 @@ $(document).on("click", "#login_btn", function () {
     });
 
 });
+
+/* Upload zipp Handler For Uploading zipp
+
+@param1: file
+@param2: category
+@response: True / False  ( True or False indicate the sucess or Failur of uploaded File)
+
+*/
 $(document).on("click", "#uploads", function () {
      var sesskey = "10";
      console.log("the request");
@@ -81,42 +89,6 @@ $(document).on("click", "#uploads", function () {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Upload zipp Handler For Uploading zipp
 
 @param1: file
@@ -124,9 +96,34 @@ $(document).on("click", "#uploads", function () {
 @response: True / False  ( True or False indicate the sucess or Failur of uploaded File)
 
 */
-$(document).on("click", "#uploads", function () {
-    console.log("Uploading...");
-	
+
+
+$(document).on("click", "#newpswd", function () {
+   console.log("newpswd...");
+   var sesskey = 10;
+	 var oldPassword = $("#change-pswd").val();
+   var newPassword = $("#confirm-pswd").val();
+   console.log("Password:",oldPassword,newPassword);
+   $.post('/changePassword',{'sesskey':sesskey,'oldPassword':oldPassword,'newPassword':newPassword},function(data){
+        if(data == "True"){
+            swal({
+                     title: 'success',
+                     type: "success",
+                     text: 'Password Changed Successfully',
+                     showCancelButton: false,
+                     showConfirmButton: true,
+                     html:true
+                    });
+        }else{
+    swal({
+            title: 'Error' ,
+            type: "error",
+            text: "Please Enter Your Correct Previous Password ",
+            timer: 3000,
+            showConfirmButton: true
+        });
+        }
+    });
 	
 });
 

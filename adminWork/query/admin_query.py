@@ -32,3 +32,12 @@ class admin_querys:
 	 sql = ("INSERT INTO productList (product_id,category) ""VALUES (%s, %s)")
 	 result = self.cur.execute(sql,data)
 	 self.dbconn.commit()
+   
+   def changepswd(self,newPswd,oldPswd):
+     data = {'newPswd':newPswd,'oldPswd':oldPswd}
+     print 'data',data
+     sql = "UPDATE {} set password = %(newPswd)s where password = %(oldPswd)s".format('adminLogin')
+     result = self.cur.execute(sql,data)
+     result = self.dbconn.commit()
+     print 'result',result
+     return result

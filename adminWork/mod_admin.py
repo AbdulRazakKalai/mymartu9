@@ -50,7 +50,24 @@ def uplodZippImage():
     return 'True'
 
 ####################################
+  #@route : changePassword  
+  #@param1 : oldPassword
+  #@param2  : newPassword
+  #@response : True / False (sucess / failur)
+@route ('/changePassword', method="POST")
+def changePassword ():
+  print 'calling post'
+  oldPassword = request.forms.oldPassword
+  newPassword = request.forms.newPassword
+  print 'res',oldPassword,newPassword
+  admin_query = admin_querys();
+  res = admin_query.changepswd(oldPassword,newPassword)
+#######################################################################################
 
+
+
+
+#######################################################################################
 @route ('/signup.html')
 def uploadZipp():
 	return template('signup')	
