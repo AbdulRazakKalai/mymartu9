@@ -59,9 +59,13 @@ def changePassword ():
   print 'calling post'
   oldPassword = request.forms.oldPassword
   newPassword = request.forms.newPassword
-  print 'res',oldPassword,newPassword
+  #print 'res',oldPassword,newPassword
   admin_query = admin_querys();
   res = admin_query.changepswd(oldPassword,newPassword)
+  if res:
+    return 'True'
+  else:
+    return 'False'
 #######################################################################################
 
 

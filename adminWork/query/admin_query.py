@@ -35,9 +35,14 @@ class admin_querys:
    
    def changepswd(self,newPswd,oldPswd):
      data = {'newPswd':newPswd,'oldPswd':oldPswd}
-     print 'data',data
+     select_stmt = "select * from {} where password = %(oldPswd)s".format('adminLogin')
+     self.cur.execute(select_stmt,data)
+     result = self.cur.fetchone()
+     if result:
+     	return False
+     print 'myresult',result
      sql = "UPDATE {} set password = %(newPswd)s where password = %(oldPswd)s".format('adminLogin')
      result = self.cur.execute(sql,data)
      result = self.dbconn.commit()
-     print 'result',result
-     return result
+     #print 'result:::::::::::::',result
+     return True
