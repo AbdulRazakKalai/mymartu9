@@ -38,7 +38,8 @@ class admin_querys:
      select_stmt = "select * from {} where password = %(oldPswd)s".format('adminLogin')
      self.cur.execute(select_stmt,data)
      result = self.cur.fetchone()
-     if result:
+     print 'res',result
+     if result == None:
      	return False
      print 'myresult',result
      sql = "UPDATE {} set password = %(newPswd)s where password = %(oldPswd)s".format('adminLogin')

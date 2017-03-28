@@ -62,6 +62,7 @@ def changePassword ():
   #print 'res',oldPassword,newPassword
   admin_query = admin_querys();
   res = admin_query.changepswd(oldPassword,newPassword)
+  print 'the res',res
   if res:
     return 'True'
   else:
