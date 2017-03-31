@@ -126,15 +126,14 @@
 <div class="col-sm-4 uploadzip-bg">
 
      <div class="input-group input-group-sm upload-bx">  
-        
-      <input type="file" id="upload-data" multiple size="50" onchange="myFunction()">
+        <form enctype="multipart/form-data">
+      <input type="file" id="upload-data-file">
         <div class="input-group-btn">
-        <button class="btn btn-primary" type="submit">
-        <li class="glyphicon glyphicon-export"></li>Upload data
-        </button>
+        <input id= "uploadData"class="btn btn-primary" type="button" value="Upload data"/>
             
         </div>
-        </div>
+    </form>
+        </div><br>
 
 
 </div>

@@ -6,7 +6,8 @@ import datetime
 import psycopg2.extras
 import psycopg2
 class admin_querys:
-   def __init__ (self, dbname = 'martu9',user= "martu9" ,password= "martu9.123" ,host="localhost",port=5432):
+   #def __init__ (self, dbname = 'martu9',user= "martu9" ,password= "martu9.123" ,host="localhost",port=5432):
+   def __init__ (self, dbname = 'martu9',user= "ashwini" ,password= "ashwini" ,host="localhost",port=5432):
       self.dbconn = psycopg2.connect(dbname=dbname,user=user ,password=password ,host=host,port=port)
       self.cur =  self.dbconn.cursor(cursor_factory=psycopg2.extras.DictCursor)
       psycopg2.extras.register_uuid()
@@ -28,8 +29,8 @@ class admin_querys:
    	 return result
 
    def addProduct(self,category,filename):
-	 data = [filename,category] 
-	 sql = ("INSERT INTO productList (product_id,category) ""VALUES (%s, %s)")
+	 data = [filename,filename+category,category] 
+	 sql = ("INSERT INTO productlist (productname,product_id,category) ""VALUES (%s, %s,%s)")
 	 result = self.cur.execute(sql,data)
 	 self.dbconn.commit()
    

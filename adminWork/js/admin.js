@@ -89,10 +89,10 @@ $(document).on("click", "#uploads", function () {
 });
 
 
-/* Upload zipp Handler For Uploading zipp
+/* Change Passwod
 
-@param1: file
-@param2: category
+@param1: currentPassword
+@param2: newPassword
 @response: True / False  ( True or False indicate the sucess or Failur of uploaded File)
 
 */
@@ -127,3 +127,58 @@ $(document).on("click", "#newpswd", function () {
 	
 });
 
+/* Upload data Handler For Uploading data file
+
+@param1: file
+@response: True / False  ( True or False indicate the sucess or Failur of uploaded File)
+
+*/
+$(document).on("click", "#uploadData", function () {
+     console.log("the request");
+     //var files = $("#files").files[0];
+     var files = $('input#upload-data-file')[0].files[0] 
+     var fileData = new FormData();
+     var xhr = new XMLHttpRequest();
+     console.log("files",files)
+     fileData.append("files",files);
+     xhr.open("post", 'uploadDataFile', true);
+       xhr.send(fileData)
+      xhr.onreadystatechange = function (oEvent) {
+            if (xhr.readyState === 4) {
+               if (xhr.status === 200 ) {
+                  // console.log('readyState- '+fileName+' :',xhr.readyState,'status- '+fileName+' :',xhr.status);
+                  //callback (JSON.parse(xhr.responseText));
+                  if( xhr.responseText == 'True'){
+                   swal({
+                     title: 'success',
+                     type: "success",
+                     text: 'File Uploaded Successfully',
+                     showCancelButton: false,
+                     showConfirmButton: true,
+                     html:true
+                    });
+                 }else{
+                    swal({
+                          title: 'Error',
+                          type: "error",
+                          text: 'uploaded file allready exist in martu9',
+                          showCancelButton:false,
+                          showConfirmButton: true,
+                          html:true
+                     });
+                 }
+               }
+               else {
+                  swal({
+                     title: 'error',
+                     type: "Error",
+                     text: 'Error while Uploading file',
+                     showCancelButton: false,
+                     showConfirmButton: true,
+                     html:true
+                    });
+            }
+         }
+     };
+ 
+});

@@ -1,7 +1,7 @@
 from bottle import Bottle, run, get,route, static_file, view, template,  post, request,template,redirect,response
 from query.admin_query import *
 from login import *
-import os
+import os,csv,xlrd
 
 #Route File ,linked in all other python Files
 
@@ -68,8 +68,25 @@ def changePassword ():
   else:
     return 'False'
 #######################################################################################
-
-
+  #@route : uploadDataFile 
+  #@param1 : file
+  #@response : True / False (sucess / failur)
+@route ('/uploadDataFile', method="POST")
+def uploadDataFile ():
+  print 'uploading data file'
+  upload = request.files.get('files')
+  name ,ext = os.path.splitext(upload.filename)
+  save_to_path = os.getcwd() +os.path.sep+"tmp"
+  file_path = "{path}/{file}".format(path=save_to_path, file=upload.filename)
+  upload.save(file_path)
+  book = xlrd.open_workbook(file_path)
+  first_sheet = book.sheet_by_index(0)
+  #print first_sheet.row_values(0)
+  cell = first_sheet.cell(0,0)
+  print cell
+  print cell.value
+  
+  
 
 
 #######################################################################################
